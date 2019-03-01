@@ -6,7 +6,7 @@
            itemprop="image"
            >
            <h1 class="name" itemprop="name">Rodrigo Alencar</h1>
-           <h2 class="about" itemprop="jobTitle">I am a FullStack developer</h2>
+           <h2 class="about" itemprop="jobTitle">FullStack developer</h2>
            <section class="contact">
              <span class="email" itemprop="email">rodrigovieira18@gmail.com</span>
            </section>
@@ -78,7 +78,7 @@ export default {
 
 .profile > .about {
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .profile > .contact {
