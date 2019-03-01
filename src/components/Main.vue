@@ -11,6 +11,9 @@
              <span class="email" itemprop="email">rodrigovieira18@gmail.com</span>
            </section>
     </figure>
+    <nav>
+      <router-link to="/json">JSON Tools</router-link>
+    </nav>
     <figure class="social">
       <a href="https://github.com/RatoX" target="_blank">
         <img src="static/logos/github.svg" alt="logo do meu github">
@@ -37,14 +40,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-a {
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  align-self: center;
-}
-
 .myself {
+  margin-top: 60px;
   width: 100%;
   flex-grow: 1;
   display: flex;

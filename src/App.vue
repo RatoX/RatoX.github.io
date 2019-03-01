@@ -1,12 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <h1 v-show="!isHome">
+      <router-link to="/" class="back">←</router-link>
+    </h1>
+    <main>
+      <router-view/>
+    </main>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
+  computed: {
+    isHome() {
+      const name = this.$route.name;
+      return name === 'Main';
+    },
+  },
 };
 </script>
 
@@ -24,11 +35,30 @@ export default {
   margin: 0;
 }
 
+a {
+  color: #999;
+  text-transform: uppercase;
+  text-decoration: none;
+  align-self: center;
+}
+
+.back {
+  color: #000;
+  font-size: 2em;
+  margin-left: 10px;
+}
+
 #app {
   width: 100vw;
   min-height: 100vh;
-  padding-top: 60px;
   display: flex;
+  flex-direction: column;
+}
+
+#app > main {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
 }
 
 html, body {
