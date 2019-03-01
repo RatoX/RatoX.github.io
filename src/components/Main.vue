@@ -12,7 +12,11 @@
            </section>
     </figure>
     <nav>
-      <router-link to="/json">JSON Tools</router-link>
+      <ul>
+        <li>
+          <router-link to="/json">JSON Playground</router-link>
+        </li>
+      </ul>
     </nav>
     <figure class="social">
       <a href="https://github.com/RatoX" target="_blank">
@@ -40,6 +44,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+nav {
+  margin: 20px 0;
+}
+
+nav ul {
+  margin-top: 10px;
+}
+
 .myself {
   margin-top: 60px;
   width: 100%;
