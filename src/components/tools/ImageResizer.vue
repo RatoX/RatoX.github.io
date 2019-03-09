@@ -148,6 +148,7 @@ export default {
           const dimension = `${img.width}x${img.height}`;
           this.original.dimension = dimension;
           this.image = img;
+          this.loading = false;
           this.updateNewDimensions();
         };
         img.src = event.target.result;
