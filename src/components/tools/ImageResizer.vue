@@ -6,29 +6,43 @@
            accept="image/*"
            :disabled="loading"
            name="image"/>
-    <section class="image-resizer__details">
-      <label for="originalSize">Original size: </label>
-      <output for="image" name="originalSize">
-        {{ originalSize }}
-      </output>
-
-      <label for="originalDimension">Original dimension: </label>
-      <output for="image" name="originalDimension">
-        {{ originalDimension }}
-      </output>
-    </section>
     <section
       v-if="image"
       class="image-resizer__resizer">
+      <section class="image-resizer__original-details">
+        <label for="originalSize">Original size: </label>
+        <output for="image" name="originalSize">
+          {{ original.size }}
+        </output>
+
+        <label for="originalDimension">Original dimension: </label>
+        <output for="image" name="originalDimension">
+          {{ original.dimension }}
+        </output>
+      </section>
+      <section class="image-resizer__new-details">
+        <label for="newDimension">New dimension: </label>
+        <output for="image" name="newDimension">
+          {{ newDimension }}
+        </output>
+      </section>
       <input
-        type="number"
+        type="range"
         id="reducePercent"
         name="reducePercent"
-        min="10" max="90"
-        v-model="reducePercent">
+        min="0" max="90"
+        v-model="reducePercent"
+        v-on:change="updateNewDimensions"
+        v-on:input="updateNewDimensions"
+        />
       <button v-on:click="reduceIt">Reduce it!</button>
       <a class="image-resizer__download" ref="downloadLink" href="#">Download it!</a>
-      <canvas class="image-resizer__result" ref="canvas"></canvas>
+      <canvas
+        class="image-resizer__result"
+        ref="canvas"
+        :width="newFile.width"
+        :height="newFile.height"
+        ></canvas>
     </section>
   </div>
 </template>
@@ -68,29 +82,48 @@ export default {
   name: 'ImageResizer',
   data() {
     return {
-      originalSize: '',
-      originalDimension: '',
-      originalType: '',
-      originalName: '',
+      original: {
+        size: '',
+        dimension: '',
+        type: '',
+        name: '',
+      },
+      newFile: {
+        width: '0',
+        height: '0',
+      },
       loading: false,
       image: null,
       reducePercent: 90,
     };
   },
+  computed: {
+    newDimension() {
+      return `${this.reducePercent}% ${this.newFile.width}x${this.newFile.height}`;
+    },
+  },
   methods: {
+    updateNewDimensions() {
+      const percent = this.reducePercent;
+      const { width, height } = this.image;
+      const newWidth = Math.ceil(width - (width * (percent / 100)));
+      const newHeight = Math.ceil(height - (height * (percent / 100)));
+
+      this.newFile.width = newWidth;
+      this.newFile.height = newHeight;
+    },
     reduceIt() {
       pica
         .resize(this.image, this.$refs.canvas, {
           unsharpAmount: 80,
           unsharpRadius: 0.6,
           unsharpThreshold: 2,
-          width: 400,
         })
-        .then(result => pica.toBlob(result, this.originalType))
+        .then(result => pica.toBlob(result, this.original.type))
         .then((result) => {
           const downloadUrl = URL.createObjectURL(result);
           const a = this.$refs.downloadLink;
-          const fileData = extractFilenameAndExtension(this.originalName);
+          const fileData = extractFilenameAndExtension(this.original.name);
 
           a.href = downloadUrl;
           a.download = `${slug(fileData[0])}.${fileData[1]}`;
@@ -103,9 +136,9 @@ export default {
       const file = target.files[0];
       const size = formatBytes(file.size);
 
-      this.originalName = file.name;
-      this.originalType = file.type;
-      this.originalSize = size;
+      this.original.name = file.name;
+      this.original.type = file.type;
+      this.original.size = size;
       this.loading = true;
       const reader = new FileReader();
 
@@ -113,9 +146,9 @@ export default {
         const img = new Image();
         img.onload = () => {
           const dimension = `${img.width}x${img.height}`;
-          this.originalDimension = dimension;
+          this.original.dimension = dimension;
           this.image = img;
-          // ctx.drawImage(img,0,0);
+          this.updateNewDimensions();
         };
         img.src = event.target.result;
       };
@@ -127,6 +160,10 @@ export default {
 </script>
 
 <style scoped>
+.image-resizer {
+  width: 100%;
+}
+
 .image-resizer__resizer {
   display: flex;
   flex-direction: column;
@@ -134,6 +171,10 @@ export default {
 }
 
 .image-resizer__download {
+  display: none;
+}
+
+.image-resizer__result {
   display: none;
 }
 </style>
