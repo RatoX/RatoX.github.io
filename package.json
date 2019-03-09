@@ -13,9 +13,9 @@
     "build": "node build/build.js",
     "deploy": "yarn build && yarn deploy:push",
     "deploy:push": "gh-pages -d dist -b master"
-
   },
   "dependencies": {
+    "pica": "^5.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

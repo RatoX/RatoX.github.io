@@ -36,6 +36,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      // Use compiled pica files from /dist folder
+      pica: 'pica/dist/pica.js',
     }
   },
   module: {

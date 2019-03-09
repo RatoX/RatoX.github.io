@@ -5,6 +5,7 @@ import Main from '@/components/Main';
 Vue.use(Router);
 
 const JSONValidator = () => import('@/components/tools/JSONValidator.vue');
+const ImageResizer = () => import('@/components/tools/ImageResizer.vue');
 
 export default new Router({
   routes: [
@@ -17,6 +18,11 @@ export default new Router({
       path: '/json',
       name: 'JSONValidator',
       component: JSONValidator,
+    },
+    {
+      path: '/image',
+      name: 'ImageResizer',
+      component: ImageResizer,
     },
   ],
 });

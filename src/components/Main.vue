@@ -16,6 +16,9 @@
         <li>
           <router-link to="/json">JSON Playground</router-link>
         </li>
+        <li>
+          <router-link to="/image">Image Resizer</router-link>
+        </li>
       </ul>
     </nav>
     <figure class="social">
