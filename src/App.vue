@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 v-show="!isHome">
-      <router-link to="/" class="back">←</router-link>
+      <Header />
     </h1>
     <main>
       <router-view/>
@@ -12,6 +12,9 @@
 <script>
 export default {
   name: 'App',
+  components: {
+    'Header': () => import('./components/Header'),
+  },
   computed: {
     isHome() {
       const name = this.$route.name;

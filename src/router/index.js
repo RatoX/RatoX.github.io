@@ -18,11 +18,17 @@ export default new Router({
       path: '/json',
       name: 'JSONValidator',
       component: JSONValidator,
+      meta: {
+        title: 'JSON Playground',
+      },
     },
     {
       path: '/image',
       name: 'ImageResizer',
       component: ImageResizer,
+      meta: {
+        title: 'Image Resizer',
+      },
     },
   ],
 });
