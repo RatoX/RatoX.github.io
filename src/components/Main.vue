@@ -65,14 +65,12 @@ nav ul {
 }
 
 .myself {
-  margin-top: 60px;
   width: 100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 30px;
 }
 
 .profile > img {
