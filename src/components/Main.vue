@@ -22,13 +22,13 @@
       </ul>
     </nav>
     <figure class="social">
-      <a href="https://github.com/RatoX" target="_blank">
+      <a href="https://github.com/RatoX" aria-label="Github" alt="my shit codes on github" target="_blank">
         <GithubLogo alt="logo do meu github"/>
       </a>
-      <a href="https://www.linkedin.com/in/Rodrigo-Alencar" target="_blank">
+      <a href="https://www.linkedin.com/in/Rodrigo-Alencar" aria-label="Linkedin" alt="my linkedin profile, send me jobs :D" target="_blank">
         <LinkedinLogo alt="logo do meu linkedin" />
       </a>
-      <a href="https://twitter.com/ratoox" target="_blank">
+      <a href="https://twitter.com/ratoox" alt="bad jokes in portuguese" aria-label="Twitter" target="_blank">
         <TwitterLogo alt="logo do meu twitter" />
       </a>
     </figure>
@@ -74,9 +74,8 @@ nav ul {
 }
 
 .profile > img {
-  max-width: 200px;
+  max-width: 150px;
   width: 60%;
-  max-height: 200px;
   margin: 1em auto;
   display: block;
   background-size: cover;

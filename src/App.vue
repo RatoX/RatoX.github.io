@@ -36,7 +36,7 @@ export default {
 }
 
 a {
-  color: #999;
+  color: #383737;
   text-transform: uppercase;
   text-decoration: none;
   align-self: center;
