@@ -22,13 +22,13 @@
       </ul>
     </nav>
     <figure class="social">
-      <a href="https://github.com/RatoX" aria-label="Github" alt="my shit codes on github" target="_blank">
+      <a href="https://github.com/RatoX" aria-label="Github" rel="noopener" alt="my shit codes on github" target="_blank">
         <GithubLogo alt="logo do meu github"/>
       </a>
-      <a href="https://www.linkedin.com/in/Rodrigo-Alencar" aria-label="Linkedin" alt="my linkedin profile, send me jobs :D" target="_blank">
+      <a href="https://www.linkedin.com/in/Rodrigo-Alencar" aria-label="Linkedin" rel="noopener" alt="my linkedin profile, send me jobs :D" target="_blank">
         <LinkedinLogo alt="logo do meu linkedin" />
       </a>
-      <a href="https://twitter.com/ratoox" alt="bad jokes in portuguese" aria-label="Twitter" target="_blank">
+      <a href="https://twitter.com/ratoox" alt="bad jokes in portuguese" aria-label="Twitter" rel="noopener" target="_blank">
         <TwitterLogo alt="logo do meu twitter" />
       </a>
     </figure>
