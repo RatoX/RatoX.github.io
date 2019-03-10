@@ -2,14 +2,14 @@
   <section class="myself" itemscope="" itemprop="Person" itemtype="http://schema.org/Person">
     <figure class="profile">
       <img alt="minha foto de perfil, sorridente e com um cachecol listrado muito legal"
-           src="static/perfil.jpg"
+           src="../assets/perfil.jpg"
            itemprop="image"
-           >
-           <h1 class="name" itemprop="name">Rodrigo Alencar</h1>
-           <h2 class="about" itemprop="jobTitle">FullStack developer</h2>
-           <section class="contact">
-             <span class="email" itemprop="email">rodrigovieira18@gmail.com</span>
-           </section>
+           />
+      <h1 class="name" itemprop="name">Rodrigo Alencar</h1>
+      <h2 class="about" itemprop="jobTitle">FullStack developer</h2>
+      <section class="contact">
+        <span class="email" itemprop="email">rodrigovieira18@gmail.com</span>
+      </section>
     </figure>
     <nav>
       <ul>
@@ -23,21 +23,30 @@
     </nav>
     <figure class="social">
       <a href="https://github.com/RatoX" target="_blank">
-        <img src="static/logos/github.svg" alt="logo do meu github">
+        <GithubLogo alt="logo do meu github"/>
       </a>
       <a href="https://www.linkedin.com/in/Rodrigo-Alencar" target="_blank">
-        <img src="static/logos/linkedin.svg" alt="logo do meu linkedin">
+        <LinkedinLogo alt="logo do meu linkedin" />
       </a>
       <a href="https://twitter.com/ratoox" target="_blank">
-        <img src="static/logos/twitter.svg" alt="logo do meu twitter">
+        <TwitterLogo alt="logo do meu twitter" />
       </a>
     </figure>
   </section>
 </template>
 
 <script>
+import GithubLogo from '../assets/logos/github.svg';
+import LinkedinLogo from '../assets/logos/linkedin.svg';
+import TwitterLogo from '../assets/logos/twitter.svg';
+
 export default {
   name: 'Main',
+  components: {
+    GithubLogo,
+    LinkedinLogo,
+    TwitterLogo,
+  },
   data() {
     return {
     };
