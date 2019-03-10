@@ -49,6 +49,7 @@
 
 <script>
 import Pica from 'pica';
+import { saveAs } from 'file-saver';
 
 const pica = Pica();
 
@@ -61,21 +62,6 @@ function formatBytes(bytes, decimals) {
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   return `${parseFloat((bytes / (k ** i)).toFixed(dm))} ${sizes[i]}`;
-}
-
-function slug(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^\w ]+/g, '')
-    .replace(/ +/g, '-');
-}
-
-function extractFilenameAndExtension(str) {
-  const arr = str.split('.');
-  const extension = arr.pop();
-  const filename = arr.join('');
-
-  return [filename, extension];
 }
 
 export default {
@@ -121,14 +107,7 @@ export default {
         })
         .then(result => pica.toBlob(result, this.original.type))
         .then((result) => {
-          const downloadUrl = URL.createObjectURL(result);
-          const a = this.$refs.downloadLink;
-          const fileData = extractFilenameAndExtension(this.original.name);
-
-          a.href = downloadUrl;
-          a.download = `${slug(fileData[0])}.${fileData[1]}`;
-          a.click();
-          window.URL.revokeObjectURL(downloadUrl);
+          saveAs(result, this.original.name);
         });
     },
 
