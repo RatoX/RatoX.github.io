@@ -58,6 +58,7 @@ export default {
 <style scoped>
 nav {
   margin: 20px 0;
+  display: none;
 }
 
 nav ul {
